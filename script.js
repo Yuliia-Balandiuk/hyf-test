@@ -35,14 +35,14 @@ function myFetchFunction() {
   fetch('https://reqres.in/api/users')
     .then((respons) => respons.json())
     .then((data) => {
-      console.log(data);
       const task3Box = document.getElementById('task3');
-      console.log(data.first_name);
-      // for (let i = 0; i < 3; i++) {
-      //   let userName = document.createElement('p');
-      //   userName.innerHTML = `${data.first_name[i]} ${data.last_name[i]}`;
-      //   task3Box.appendChild(userName);
-      // }
+      const dataItems = data.data.slice(0, 3);
+      console.log(dataItems);
+      dataItems.forEach((element) => {
+        let userName = document.createElement('p');
+        userName.innerHTML = `${element.first_name} ${element.last_name}`;
+        task3Box.appendChild(userName);
+      });
     });
 }
 
